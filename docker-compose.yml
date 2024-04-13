@@ -1,0 +1,15 @@
+services:
+  db:
+    image: mariadb:10.11
+    container_name: todojs-db
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:-root}
+      MARIADB_DATABASE: ${MARIADB_DATABASE:-todojs-db}
+      MARIADB_USER: ${MARIADB_USERNAME:-todojs-db}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD:-todojs-db}
+    ports:
+      - ${MARIADB_PORT:-3306}:3306
+    restart: always
+#    volumes:
+#      - ./db-data:/var/lib/mysql
+#      - ./db-init:/docker-entrypoint-initdb.d
